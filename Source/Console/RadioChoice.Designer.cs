@@ -77,8 +77,8 @@ namespace PowerSDR
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(429, 242);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // timer_button_update
             // 
@@ -92,7 +92,6 @@ namespace PowerSDR
             this.btnAddLegacy.TabIndex = 1;
             this.btnAddLegacy.Text = "Add Legacy Radios";
             this.btnAddLegacy.UseVisualStyleBackColor = true;
-            this.btnAddLegacy.Visible = false;
             this.btnAddLegacy.Click += new System.EventHandler(this.btnAddLegacy_Click);
             // 
             // radiosAvailableBindingSource

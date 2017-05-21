@@ -432,6 +432,9 @@ namespace PowerSDR
 
         [DllImport("DttSP.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "SetDiversityGain")]
         unsafe public static extern int SetDiversityGain(float gain); // valid 0.0 - 1.0
+		
+		[DllImport("DttSP.dll", EntryPoint="SetRingBufferOffset")]
+		public static extern void SetRingBufferOffset(uint thread, int offset);
 
         #endregion
 

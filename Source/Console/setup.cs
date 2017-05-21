@@ -105,6 +105,9 @@ namespace PowerSDR
 		private System.Windows.Forms.ComboBoxTS comboKBTuneDown7;
 		private System.Windows.Forms.ComboBoxTS comboKBTuneUp6;
 		private System.Windows.Forms.GroupBoxTS grpKBTune;
+		private System.Windows.Forms.NumericUpDownTS udIQCorrection;
+		private System.Windows.Forms.CheckBoxTS checkBoxTS1;
+		private System.Windows.Forms.CheckBoxTS checkBoxTS2;
 		private System.Windows.Forms.LabelTS lblKBTuneDigit;
 		private System.Windows.Forms.LabelTS lblKBTune7;
 		private System.Windows.Forms.LabelTS lblKBTune6;
@@ -1062,6 +1065,7 @@ namespace PowerSDR
         public CheckBoxTS chkTXMeter2;
         public CheckBoxTS chkBoxPM;
         public GroupBoxTS groupBoxTS1;
+		public GroupBoxTS groupBoxTS2;
         private LabelTS labelTS15;
         public NumericUpDownTS udSpeedPM;
         public CheckBoxTS chkBoxHTTP;
@@ -1101,6 +1105,7 @@ namespace PowerSDR
         public CheckBoxTS chk2ndMeter;
         private ButtonTS buttonTS1;
         private System.ComponentModel.IContainer components;
+		private System.Windows.Forms.CheckBoxTS chkExtended;		//[patch_extended]
 
 		#endregion
 
@@ -1352,6 +1357,7 @@ namespace PowerSDR
             this.tpGeneral = new System.Windows.Forms.TabPage();
             this.tcGeneral = new System.Windows.Forms.TabControl();
             this.tpGeneralHardware = new System.Windows.Forms.TabPage();
+            this.chkExtended = new System.Windows.Forms.CheckBoxTS();
             this.grpHWSoftRock = new System.Windows.Forms.GroupBoxTS();
             this.lblGenSoftRockCenterFreq = new System.Windows.Forms.LabelTS();
             this.udSoftRockCenterFreq = new System.Windows.Forms.NumericUpDownTS();
@@ -1511,6 +1517,8 @@ namespace PowerSDR
             this.tpAudio = new System.Windows.Forms.TabPage();
             this.tcAudio = new System.Windows.Forms.TabControl();
             this.tpAudioCard1 = new System.Windows.Forms.TabPage();
+            this.groupBoxTS2 = new System.Windows.Forms.GroupBoxTS();
+            this.udIQCorrection = new System.Windows.Forms.NumericUpDownTS();
             this.chkAudioExpert = new System.Windows.Forms.CheckBoxTS();
             this.grpAudioMicBoost = new System.Windows.Forms.GroupBoxTS();
             this.grpAudioChannels = new System.Windows.Forms.GroupBoxTS();
@@ -2375,10 +2383,10 @@ namespace PowerSDR
             this.btnApply = new System.Windows.Forms.ButtonTS();
             this.btnCancel = new System.Windows.Forms.ButtonTS();
             this.btnOK = new System.Windows.Forms.ButtonTS();
+            this.buttonTS1 = new System.Windows.Forms.ButtonTS();
             this.timer_sweep = new System.Windows.Forms.Timer(this.components);
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.buttonTS1 = new System.Windows.Forms.ButtonTS();
             this.tcSetup.SuspendLayout();
             this.tpGeneral.SuspendLayout();
             this.tcGeneral.SuspendLayout();
@@ -2435,6 +2443,8 @@ namespace PowerSDR
             this.tpAudio.SuspendLayout();
             this.tcAudio.SuspendLayout();
             this.tpAudioCard1.SuspendLayout();
+            this.groupBoxTS2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.udIQCorrection)).BeginInit();
             this.grpAudioChannels.SuspendLayout();
             this.grpAudioMicInGain1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udAudioMicGain1)).BeginInit();
@@ -2715,6 +2725,7 @@ namespace PowerSDR
             // tpGeneralHardware
             // 
             this.tpGeneralHardware.BackColor = System.Drawing.SystemColors.Control;
+            this.tpGeneralHardware.Controls.Add(this.chkExtended);
             this.tpGeneralHardware.Controls.Add(this.grpHWSoftRock);
             this.tpGeneralHardware.Controls.Add(this.grpGeneralDDS);
             this.tpGeneralHardware.Controls.Add(this.grpGeneralModel);
@@ -2728,6 +2739,17 @@ namespace PowerSDR
             this.tpGeneralHardware.Size = new System.Drawing.Size(592, 318);
             this.tpGeneralHardware.TabIndex = 0;
             this.tpGeneralHardware.Text = "Hardware Config";
+            // 
+            // chkExtended
+            // 
+            this.chkExtended.Image = null;
+            this.chkExtended.Location = new System.Drawing.Point(336, 182);
+            this.chkExtended.Name = "chkExtended";
+            this.chkExtended.Size = new System.Drawing.Size(104, 16);
+            this.chkExtended.TabIndex = 24;
+            this.chkExtended.Text = "Extended Freq.";
+            this.toolTip1.SetToolTip(this.chkExtended, "Check to enable Extended Frequency Range");
+            this.chkExtended.CheckedChanged += new System.EventHandler(this.chkExtended_CheckedChanged);
             // 
             // grpHWSoftRock
             // 
@@ -3518,7 +3540,7 @@ namespace PowerSDR
             this.tbOptUSBBuf.Location = new System.Drawing.Point(22, 20);
             this.tbOptUSBBuf.Maximum = 4;
             this.tbOptUSBBuf.Name = "tbOptUSBBuf";
-            this.tbOptUSBBuf.Size = new System.Drawing.Size(112, 45);
+            this.tbOptUSBBuf.Size = new System.Drawing.Size(112, 42);
             this.tbOptUSBBuf.TabIndex = 0;
             this.tbOptUSBBuf.Value = 1;
             this.tbOptUSBBuf.Scroll += new System.EventHandler(this.tbOptUSBBuf_Scroll);
@@ -4955,6 +4977,7 @@ namespace PowerSDR
             // 
             // tpAudioCard1
             // 
+            this.tpAudioCard1.Controls.Add(this.groupBoxTS2);
             this.tpAudioCard1.Controls.Add(this.chkAudioExpert);
             this.tpAudioCard1.Controls.Add(this.grpAudioMicBoost);
             this.tpAudioCard1.Controls.Add(this.grpAudioChannels);
@@ -4972,10 +4995,50 @@ namespace PowerSDR
             this.tpAudioCard1.TabIndex = 0;
             this.tpAudioCard1.Text = "Primary";
             // 
+            // groupBoxTS2
+            // 
+            this.groupBoxTS2.Controls.Add(this.udIQCorrection);
+            this.groupBoxTS2.Location = new System.Drawing.Point(470, 10);
+            this.groupBoxTS2.Name = "groupBoxTS2";
+            this.groupBoxTS2.Size = new System.Drawing.Size(104, 56);
+            this.groupBoxTS2.TabIndex = 51;
+            this.groupBoxTS2.TabStop = false;
+            this.groupBoxTS2.Text = "IQ Correction";
+            this.groupBoxTS2.Enter += new System.EventHandler(this.groupBoxTS2_Enter);
+            // 
+            // udIQCorrection
+            // 
+            this.udIQCorrection.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udIQCorrection.Location = new System.Drawing.Point(16, 24);
+            this.udIQCorrection.Maximum = new decimal(new int[] {
+            32,
+            0,
+            0,
+            0});
+            this.udIQCorrection.Minimum = new decimal(new int[] {
+            32,
+            0,
+            0,
+            -2147483648});
+            this.udIQCorrection.Name = "udIQCorrection";
+            this.udIQCorrection.Size = new System.Drawing.Size(72, 20);
+            this.udIQCorrection.TabIndex = 51;
+            this.toolTip1.SetToolTip(this.udIQCorrection, "Corrects sample shift for Left and Right Soundcard input.  ");
+            this.udIQCorrection.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.udIQCorrection.ValueChanged += new System.EventHandler(this.udIQCorrection_ValueChanged);
+            // 
             // chkAudioExpert
             // 
             this.chkAudioExpert.Image = null;
-            this.chkAudioExpert.Location = new System.Drawing.Point(480, 24);
+            this.chkAudioExpert.Location = new System.Drawing.Point(8, 230);
             this.chkAudioExpert.Name = "chkAudioExpert";
             this.chkAudioExpert.Size = new System.Drawing.Size(56, 24);
             this.chkAudioExpert.TabIndex = 50;
@@ -8395,7 +8458,7 @@ namespace PowerSDR
             this.tbDSPImagePhaseTX.Maximum = 400;
             this.tbDSPImagePhaseTX.Minimum = -400;
             this.tbDSPImagePhaseTX.Name = "tbDSPImagePhaseTX";
-            this.tbDSPImagePhaseTX.Size = new System.Drawing.Size(160, 45);
+            this.tbDSPImagePhaseTX.Size = new System.Drawing.Size(160, 42);
             this.tbDSPImagePhaseTX.TabIndex = 3;
             this.tbDSPImagePhaseTX.TickFrequency = 50;
             this.toolTip1.SetToolTip(this.tbDSPImagePhaseTX, "Sets the phase offset between the I and Q channels.  ");
@@ -8417,7 +8480,7 @@ namespace PowerSDR
             this.tbDSPImageGainTX.Maximum = 500;
             this.tbDSPImageGainTX.Minimum = -500;
             this.tbDSPImageGainTX.Name = "tbDSPImageGainTX";
-            this.tbDSPImageGainTX.Size = new System.Drawing.Size(160, 45);
+            this.tbDSPImageGainTX.Size = new System.Drawing.Size(160, 42);
             this.tbDSPImageGainTX.TabIndex = 4;
             this.tbDSPImageGainTX.TickFrequency = 50;
             this.toolTip1.SetToolTip(this.tbDSPImageGainTX, "Sets the amplitude/gain offset between the I and Q channels.  ");
@@ -16189,7 +16252,7 @@ namespace PowerSDR
             this.tkbarTestGenFreq.Location = new System.Drawing.Point(16, 104);
             this.tkbarTestGenFreq.Maximum = 20000;
             this.tkbarTestGenFreq.Name = "tkbarTestGenFreq";
-            this.tkbarTestGenFreq.Size = new System.Drawing.Size(344, 45);
+            this.tkbarTestGenFreq.Size = new System.Drawing.Size(344, 42);
             this.tkbarTestGenFreq.TabIndex = 1;
             this.tkbarTestGenFreq.TickFrequency = 1000;
             this.toolTip1.SetToolTip(this.tkbarTestGenFreq, "Sets the frequency of the signal.");
@@ -16691,16 +16754,6 @@ namespace PowerSDR
             this.toolTip1.SetToolTip(this.btnOK, "Keep current settings and close form.");
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // timer_sweep
-            // 
-            this.timer_sweep.Tick += new System.EventHandler(this.timer_sweep_Tick);
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.Filter = "PowerSDR Database Files (*.xml)|*.xml|All files|*.*";
-            this.saveFileDialog1.InitialDirectory = "Environment.GetFolderPath(Environment.SpecialFolder.Desktop)";
-            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
-            // 
             // buttonTS1
             // 
             this.buttonTS1.Image = null;
@@ -16711,6 +16764,16 @@ namespace PowerSDR
             this.buttonTS1.Text = "Check for Software Updates";
             this.toolTip1.SetToolTip(this.buttonTS1, "Check for Software updates to ke9ns PowerSDR");
             this.buttonTS1.Click += new System.EventHandler(this.buttonTS1_Click);
+            // 
+            // timer_sweep
+            // 
+            this.timer_sweep.Tick += new System.EventHandler(this.timer_sweep_Tick);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "PowerSDR Database Files (*.xml)|*.xml|All files|*.*";
+            this.saveFileDialog1.InitialDirectory = "Environment.GetFolderPath(Environment.SpecialFolder.Desktop)";
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
             // Setup
             // 
@@ -16793,6 +16856,8 @@ namespace PowerSDR
             this.tpAudio.ResumeLayout(false);
             this.tcAudio.ResumeLayout(false);
             this.tpAudioCard1.ResumeLayout(false);
+            this.groupBoxTS2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.udIQCorrection)).EndInit();
             this.grpAudioChannels.ResumeLayout(false);
             this.grpAudioMicInGain1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.udAudioMicGain1)).EndInit();
@@ -26913,6 +26978,38 @@ namespace PowerSDR
 			Audio.VACCorrectIQ = chkAudioCorrectIQ.Checked;
 		}
         
+		private void udIQCorrection_ValueChanged(object sender, System.EventArgs e)
+		{
+			DttSP.SetRingBufferOffset(0, (int)udIQCorrection.Value);
+			DttSP.SetRingBufferOffset(1, (int)udIQCorrection.Value);
+		}
+
+		private void groupBoxTS2_Enter(object sender, System.EventArgs e)
+		{
+		
+		}
+
+		private void checkBoxTS2_CheckedChanged(object sender, System.EventArgs e)
+		{
+			console.Extended = checkBoxTS2.Checked;
+		}
+
+		private void IQRegister_Click(object sender, System.EventArgs e)
+		{
+		
+		}
+
+		private void IQClear_Click(object sender, System.EventArgs e)
+		{
+		
+		}
+		
+		//[patch_extended]
+		private void chkExtended_CheckedChanged(object sender, System.EventArgs e)
+		{
+			console.Extended = chkExtended.Checked;
+		}
+		
         private void chkVAC2DirectIQCal_CheckedChanged(object sender, EventArgs e)
         {
             Audio.VAC2CorrectIQ = chkVAC2DirectIQCal.Checked;

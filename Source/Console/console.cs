@@ -51052,7 +51052,7 @@ namespace PowerSDR
 			for(int i=0; i<meter_text_history.Length; i++)
 				meter_text_history[i] = 0.0f;
 
-			if(!fwc_init) || current_model == Model.SDR1000)
+			if(current_model == Model.SDR1000)
                 comboPreamp.Enabled = !chkMOX.Checked;
 			setupForm.MOX = chkMOX.Checked;
 			ResetMultiMeterPeak();
