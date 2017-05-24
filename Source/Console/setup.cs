@@ -5441,6 +5441,7 @@ namespace PowerSDR
             "Sound Blaster Extigy (USB)",
             "Sound Blaster MP3+ (USB)",
             "Turtle Beach Santa Cruz (PCI)",
+			"Kx Driver Project",
             "Unsupported Card"});
             this.comboAudioSoundCard.Location = new System.Drawing.Point(24, 24);
             this.comboAudioSoundCard.MaxDropDownItems = 11;
@@ -18970,6 +18971,9 @@ namespace PowerSDR
 					case SoundCard.SANTA_CRUZ:
 						comboAudioSoundCard.Text = "Turtle Beach Santa Cruz (PCI)";
 						break;
+					case SoundCard.KX_DRIVER:
+						comboAudioSoundCard.Text = "Kx Driver Project";
+						break;
 					case SoundCard.UNSUPPORTED_CARD:
 						comboAudioSoundCard.Text = "Unsupported Card";
 						break;
@@ -21848,6 +21852,9 @@ namespace PowerSDR
 				case "Turtle Beach Santa Cruz (PCI)":
 					card = SoundCard.SANTA_CRUZ;
 					break;
+				case "Kx Driver Project":
+					card = SoundCard.KX_DRIVER;
+					break;
 				case "Unsupported Card":
 					card = SoundCard.UNSUPPORTED_CARD;
 					break;
@@ -22614,6 +22621,60 @@ namespace PowerSDR
 						Audio.IN_TX_R = 1;
 					}
 					break;
+					//Excalibur201010 Add KX_DRIVER
+				case SoundCard.KX_DRIVER:
+					grpAudioDetails1.Enabled = false;
+					grpAudioVolts1.Visible = chkAudioExpert.Checked;
+					udAudioVoltage1.Value = 2.23M;
+					if(!comboAudioSampleRate1.Items.Contains(48000))	comboAudioSampleRate1.Items.Add(48000);
+
+                    if (comboAudioSoundCard.Focused || comboAudioSampleRate1.SelectedIndex < 0)		comboAudioSampleRate1.Text = "48000";
+
+                    foreach (PADeviceInfo p in comboAudioDriver1.Items)
+					{
+						if(p.Name == "ASIO")
+						{
+							comboAudioDriver1.SelectedItem = p;
+							break;
+						}
+					}
+
+					foreach(PADeviceInfo dev in comboAudioInput1.Items)
+					{
+						if(dev.Name == "kX ASIO SB0222 10k1 [ec00]")
+						{
+							comboAudioInput1.Text = "kX ASIO SB0222 10k1 [ec00]";
+							comboAudioOutput1.Text = "kX ASIO SB0222 10k1 [ec00]";
+						}
+					}
+					
+					comboAudioMixer1.Text = "None";
+
+					if(comboAudioInput1.Text != "kX ASIO SB0222 10k1 [ec00]")
+					{
+						MessageBox.Show("Kx Driver ASIO driver not found.  Please visit " +
+							"https://www.kxproject.com/, download and install the latest driver, "+
+							"and try again.  For more support, email support@flexradio.com.",
+							"Kx Driver ASIO Driver Not Found",
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Exclamation);
+						console.PowerEnabled = false;
+					}
+					else 
+					{
+						chkAudioEnableVAC.Enabled = true;
+						grpAudioMicInGain1.Enabled = false;
+						grpAudioLineInGain1.Enabled = false;
+						console.PowerEnabled = true;
+						comboAudioChannels1.Text = "4";
+						comboAudioChannels1.Enabled = false;
+						Audio.IN_RX1_L = 0;
+						Audio.IN_RX1_R = 1;
+						Audio.IN_TX_L = 2;
+						Audio.IN_TX_R = 3;
+					}
+					break;
+					//END
 				case SoundCard.UNSUPPORTED_CARD:
 					if(comboAudioSoundCard.Focused)
 					{

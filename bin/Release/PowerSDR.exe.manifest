@@ -157,13 +157,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PowerMate.dll" size="39936">
-      <assemblyIdentity name="PowerMate" version="1.0.6350.33908" language="neutral" processorArchitecture="x86" />
+      <assemblyIdentity name="PowerMate" version="1.0.6350.41022" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>xGaEjUCHqmyfeY2QZ+NeKdWwq0C4CncGDSKCcTkDVpw=</dsig:DigestValue>
+        <dsig:DigestValue>HwInbnImxzimejkl+OYOA+0l5vnjo923rrbF5V8aAgw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -175,7 +175,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gZeW2EmmObS4janckhsunlLTpFDmiXS089tXPH1NuYY=</dsig:DigestValue>
+        <dsig:DigestValue>O10N+K90fqZ2Jvf4rgAyGMN6ZEih1ySn1I6BX29QLL0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

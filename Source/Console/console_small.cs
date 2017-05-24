@@ -296,7 +296,8 @@ namespace PowerSDR
 		AUDIGY_2_ZS,
 		EXTIGY,
 		MP3_PLUS,
-		SANTA_CRUZ,				
+		SANTA_CRUZ,
+		KX_DRIVER,
 		LAST,
 	}
 
@@ -2415,6 +2416,9 @@ namespace PowerSDR
                     case SoundCard.EDIROL_FA_66:
                         rx1_meter_cal_offset = -46.82864f;
                         break;
+                    case SoundCard.KX_DRIVER:
+                        rx1_meter_cal_offset = -22.43533f;
+                        break;
                     case SoundCard.UNSUPPORTED_CARD:
                         rx1_meter_cal_offset = -22.43533f;
                         break;
@@ -2445,6 +2449,9 @@ namespace PowerSDR
                         break;
                     case SoundCard.EDIROL_FA_66:
                         RX1DisplayCalOffset = -80.429f;
+                        break;
+                    case SoundCard.KX_DRIVER:
+                        RX1DisplayCalOffset = -48.62103f;
                         break;
                     case SoundCard.UNSUPPORTED_CARD:
                         RX1DisplayCalOffset = -48.62103f;
