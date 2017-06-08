@@ -76,7 +76,6 @@ namespace PowerSDR
 		private System.Windows.Forms.LabelTS lblStatus;
 		private System.Windows.Forms.Panel pnlStatus;
         private System.Windows.Forms.Timer timer1;
-        public TextBox textBox1;
         private System.ComponentModel.IContainer components = null;
 
 		#endregion
@@ -94,7 +93,7 @@ namespace PowerSDR
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
              
           //  textBox1.Text = "v" + fvi.FileVersion.Substring(0, fvi.FileVersion.LastIndexOf(".")) + "." + SVNRev.LATEST_REV;
-            textBox1.Text = "v" + fvi.FileVersion.ToString();
+          //  textBox1.Text = "v" + fvi.FileVersion.ToString();
 
             this.Opacity = .00;
 			timer1.Interval = TIMER_INTERVAL;
@@ -122,7 +121,6 @@ namespace PowerSDR
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Splash));
             this.pnlStatus = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblTimeRemaining = new System.Windows.Forms.LabelTS();
             this.lblStatus = new System.Windows.Forms.LabelTS();
             this.SuspendLayout();
@@ -140,22 +138,6 @@ namespace PowerSDR
             // 
             this.timer1.Interval = 50;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Yellow;
-            this.textBox1.Location = new System.Drawing.Point(130, 152);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(115, 24);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = "v2.8.0.0";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.textBox1.VisibleChanged += new System.EventHandler(this.textBox1_VisibleChanged);
             // 
             // lblTimeRemaining
             // 
@@ -184,8 +166,7 @@ namespace PowerSDR
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(600, 384);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(592, 379);
             this.Controls.Add(this.pnlStatus);
             this.Controls.Add(this.lblTimeRemaining);
             this.Controls.Add(this.lblStatus);
@@ -196,7 +177,6 @@ namespace PowerSDR
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Splash";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
 		}
 		#endregion
@@ -478,8 +458,6 @@ namespace PowerSDR
           
 
         }
-
-
     } // class Splash 
 
     #region Registry Access Class

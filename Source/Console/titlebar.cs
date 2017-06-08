@@ -39,11 +39,11 @@ namespace PowerSDR
 
 #if (NO_DJ)
         //  public const string BUILT_BY = "Mods Compiled by [KE9NS]";
-        public const string BUILT_BY = "[Mods by KE9NS]"; //
+        public const string BUILT_BY = "[Mods by KE9NS + Excalibur]"; //
 #else
         
 
-         public const string BUILT_BY = "Mods Compiled by [KE9NS]";
+         public const string BUILT_BY = "Mods Compiled by [KE9NS + Excalibur]";
 #endif    
         public const string VERSION_SUFFIX = SVNRev.LATEST_REV; // Make this "" for production
 
