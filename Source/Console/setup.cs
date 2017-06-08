@@ -5441,7 +5441,7 @@ namespace PowerSDR
             "Sound Blaster Extigy (USB)",
             "Sound Blaster MP3+ (USB)",
             "Turtle Beach Santa Cruz (PCI)",
-			"Kx Driver Project",
+            "Kx Driver Project",
             "Unsupported Card"});
             this.comboAudioSoundCard.Location = new System.Drawing.Point(24, 24);
             this.comboAudioSoundCard.MaxDropDownItems = 11;
@@ -16764,6 +16764,7 @@ namespace PowerSDR
             this.buttonTS1.TabIndex = 23;
             this.buttonTS1.Text = "Check for Software Updates";
             this.toolTip1.SetToolTip(this.buttonTS1, "Check for Software updates to ke9ns PowerSDR");
+            this.buttonTS1.Visible = false;
             this.buttonTS1.Click += new System.EventHandler(this.buttonTS1_Click);
             // 
             // timer_sweep
