@@ -1,3 +1,9 @@
+Forked 10.03.2017
+In progress changes as of 10.03.2017 (KD0CQ):
+Working to add Win7 x64 LPT compatibility via HighRez.co.uk's InOut32.dll and InOut64.dll.
+Also it needs a bug fix for external device control. Will not key an amp or transverter.
+
+
 This project was started 1/1/2016 by Darrin Kohn KE9NS and is based upon
 the GPL Open Source PowerSDR 2.7.2 SVN: 5123 code provided by Flex Radio Systems, Inc.
 With generous help provided by Flex Radio Systems, Inc.
